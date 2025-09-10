@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1543353071-873f17a7a088') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      width: 320px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #28a745;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input {
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 0.6rem;
+      background: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .switch-link {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .home-link {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .home-btn {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      background: #28a745;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+
+    .home-btn:hover {
+      background: #218838;
+    }
+
+    label {
+      font-weight: 500;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Login Form (Hidden Initially) -->
+    <div id="loginForm" class="hidden">
+      <h1>Welcome Back</h1>
+      <h2>Login</h2>
+      <form onsubmit="event.preventDefault(); alert('Logged in!');">
+        <label for="username">Username:</label>
+        <input type="text" placeholder="Username" required />
+        <label for="password">Password:</label>
+        <input type="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+      </form>
+      <div class="switch-link">
+        Don't have an account? <a href="#" onclick="switchForm('register')">Register</a>
+      </div>
+      <div class="home-link">
+        <a href="http://127.0.0.1:8000/home/" class="home-btn">Home</a>
+      </div>
+    </div>
+
+    <!-- Register Form (Visible Initially) -->
+    <div id="registerForm">
+      <h1>Welcome</h1>
+      <h2>Register</h2>
+      <form onsubmit="event.preventDefault(); alert('Registered!'); switchForm('login');">
+        <label for="name">Name:</label>
+        <input type="text" placeholder="Name" required />
+        <label for="email">Email:</label>
+        <input type="email" placeholder="Email" required />
+        <label for="password">Password:</label>
+        <input type="password" placeholder="Password" required />
+        <button type="submit">Register</button>
+      </form>
+      <div class="switch-link">
+        Already have an account? <a href="#" onclick="switchForm('login')">Login</a>
+      </div>
+      <div class="home-link">
+        <a href="http://127.0.0.1:8000/home/" class="home-btn">Home</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function switchForm(formType) {
+      const login = document.getElementById('loginForm');
+      const register = document.getElementById('registerForm');
+      if (formType === 'login') {
+        login.classList.remove('hidden');
+        register.classList.add('hidden');
+      } else {
+        register.classList.remove('hidden');
+        login.classList.add('hidden');
+      }
+    }
+  </script>
+</body>
+</html>
